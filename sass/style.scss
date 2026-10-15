@@ -39,7 +39,7 @@ html {
 body {
     margin: 0;
     overflow-x: clip;
-    font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+    font-family: "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
     font-weight: 500;
     color: #FFFFFF;
     font-style: normal;
@@ -59,7 +59,13 @@ a {
     opacity: 1;
     transition: opacity 0.5s;
     &:hover {
-        opacity: 0.8;
+        opacity: 0.6;
+    }
+    @include sp {
+        transition: none;
+        &:hover {
+            opacity: 1;
+        }
     }
 }
 .inner, .inner1, .inner2 {
@@ -88,7 +94,7 @@ a {
         text-indent: 0.3em;
         line-height: 1.1;
         @include sp {
-            font-size: clamp(3.0rem, calc(30 / 375 * 100vw), 3.5rem);
+            font-size: clamp(2.5rem, calc(30 / 375 * 100vw), 4.0rem);
         }
     }
     p {
@@ -127,10 +133,11 @@ scroll_up ｜下から上へ出現
     position: fixed;
     width: 100%;
     z-index: 100;
-    @include sp {
+    /*border: 1px solid #FFFFFF;*/
+    /*@include sp {
         display: initial;
         padding: 0;
-    }
+    }*/
     &.change-color {
         background-color: #4D9600;
     }
@@ -139,7 +146,9 @@ scroll_up ｜下から上へ出現
     display: flex;
     max-width: 1080px;
     margin: 0 auto;
-    padding-inline: clamp(50px, 7.4vw, 100px);
+    padding-left: clamp(50px, calc(80 / 1080 * 100vw), 100px);
+    padding-right: clamp(50px, calc(79 / 1080 * 100vw), 100px);
+    /*padding-inline: clamp(50px, calc(80 / 1080 * 100vw), 100px);*/
     @include sp {
         height: 50px;
         padding-inline: 20px;
@@ -147,18 +156,16 @@ scroll_up ｜下から上へ出現
 }
 .title {
     margin-right: auto;
-    @include sp {
-        font-size: 2.0rem;
-    }
     a {
         display: block;
-        padding: 2.8rem 0 1.9rem;
-        font-size: clamp(1.5rem, calc(20 / 1080 * 100vw), 2.0rem);
-        line-height: 1.65;
+        padding: 3.0rem 0 1.9rem;
+        font-size: clamp(1.7rem, calc(20 / 1080 * 100vw), 2.0rem);
+        line-height: 1;
         @include sp {
             padding: 0.8rem 0 0.9rem;
             /*font-size: clamp(1.5rem, calc(20 / 375 * 100vw), 2.5rem);*/
-            font-size: 2.0rem;
+            font-size: clamp(1.8rem, calc(20 / 375 * 100vw), 3.0rem);
+            line-height: 1.65;
         }
     }
 }
@@ -173,7 +180,6 @@ scroll_up ｜下から上へ出現
         right: -120%;
         width: 300px;
         padding: 0;
-        border: 0px solid #000;
         background: #4D9600;
         z-index: 2;
         opacity: 0;  // 初期状態では透明
@@ -183,20 +189,17 @@ scroll_up ｜下から上へ出現
             right: 0;  // メニューが表示される位置
             opacity: 1;  // メニューが表示されるときに透明度を1に
             pointer-events: auto;  // クリックを有効に
-            @include sp {
-                    right: 0;
-            }
         }
     }
     a {
         display: block;
         position: relative;
-        padding: 2.7rem 0 2.0rem;
-        font-size: clamp(1.2rem, calc(18 / 1080 * 100vw), 1.8rem);
-        line-height: 1.833;
-        letter-spacing: 0.01em;
+        padding: 3.1rem 0 2.0rem;
+        font-size: clamp(1.4rem, calc(18 / 1080 * 100vw), 1.8rem);
+        line-height: 1.0;
+        letter-spacing: 0.005em;
+        font-weight: 500;
         @include sp {
-            display: block;
             padding: 1.2rem 0.5rem 1.3rem calc(20 / 375 * 100vw);
             width: 80vw;
             height: auto;
@@ -346,7 +349,7 @@ main {
     top: 51.3%;
     transform: translate(-50%,-50%);
     font-weight: 600;
-    font-size: 4.0rem;
+    font-size: clamp(3.0rem, calc(40 / 1080 * 100vw), 4.0rem);
     text-align: center;
     line-height: 1.75;
     text-shadow: 5px 5px 5px #000000;
@@ -356,7 +359,7 @@ main {
     @include sp {
         left: 51%;
         /*font-size:max(100vw * 3.0 / 375,3.0rem);*/
-        font-size: clamp(3.0rem, calc(30 / 375 * 100vw), 3.5rem);
+        font-size: clamp(2.8rem, calc(30 / 375 * 100vw), 4.0rem);
         line-height: 2;
         text-indent: 0;
     }
@@ -438,9 +441,6 @@ main {
 .text {
     display: flex;
     justify-content: center;
-    @include sp {
-
-    }
 }
 
 /* サービス */
@@ -478,7 +478,7 @@ main {
                 .service-capture {
                     font-size: 1.6rem;
                     color: #000;
-                    line-height: 1.563;
+                    line-height: calc(25 / 16);
                     @include sp {
                         margin: 0.5rem 0 0.6rem;
                     }
@@ -499,9 +499,6 @@ main {
                 h3, p {
                     position: relative;
                     font-weight: 600;
-                    @include sp {
-                        max-width: 100%;
-                    }
                 }
                 h3 {
                     font-size: clamp(2.0rem, calc(25 / 1080 * 100vw), 2.5rem);
@@ -509,13 +506,13 @@ main {
                     margin-bottom: 1.7rem;
                     @include sp {
                         margin-bottom: 1.4rem;
-                        font-size: clamp(1.6rem, calc(20 / 375 * 100vw), 2.5rem);
+                        font-size: clamp(1.8rem, calc(20 / 375 * 100vw), 3.0rem);
                         line-height: 1.25;
                     }
                 }
                 p {
                     font-size: clamp(1.4rem, calc(16 / 1080 * 100vw), 1.6rem);
-                    line-height: 1.563;
+                    line-height: calc(25 / 16);
                     @include tab {
                         font-size: clamp(1.25rem, calc(16 / 1080 * 100vw), 1.6rem);
                     }
@@ -539,13 +536,17 @@ main {
             .service-textarea {
                 @include pc {
                     margin-left:  calc(-180 / 920 * 100%);
-                    padding: 5rem 0.5rem 4.2rem calc(220 / 920 * 100%);
+                    padding: 5rem 0.5rem 4.2rem calc(248 / 920 * 100%);
                 }
-                @include tab {
+                /*@include tab {
                     padding-left: calc(210 / 920 * 100%);
-                }
-                h3, p {
-                    
+                }*/
+            }
+            &:nth-child(3) {
+                .service-textarea {
+                    @include pc {
+                        padding-left: calc(238 / 920 * 100%);
+                    }
                 }
             }
         }
@@ -560,18 +561,13 @@ main {
                     padding: 5rem calc(185 / 920 * 100%) 4.2rem 4rem;
                     margin-right: calc(-180 / 920 * 100%);
                 }
+                &::before {
+                    left: 0;
+                }
             }
             .service-image {
                 @include pc {
                     text-align: right;
-                }
-            }
-            .service-textarea {
-                &::before {
-                    left: 0;
-                }
-                @include pc {
-                    padding-left: 4.0rem;
                 }
             }
         }
@@ -589,7 +585,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    gap: 4.5rem 4.3%;
+    gap: 4.5rem calc(40 / 920 * 100%);
     justify-content: flex-start;
     @include sp {
         display: block;
@@ -597,7 +593,7 @@ main {
     }
 }
 .works-box {
-    width: calc((100% - 12.9%) / 4);
+    width: calc((100% - 120px) / 4);
     cursor: pointer;
     @include sp {
         width: 100%;
@@ -614,12 +610,12 @@ main {
     }
 }
 .works-textarea {
-    font-size: 1.6rem;
-    line-height: 1.563;
+    font-size: clamp(1.4rem, calc(16 / 1080 * 100vw), 1.6rem);
+    line-height: calc(25 / 16);
     color: #000000;
     @include sp {
         margin-bottom: 2.2rem;
-        font-size: clamp(1.6rem, calc(16 / 375 * 100vw), 2.0rem);
+        font-size: clamp(1.6rem, calc(16 / 375 * 100vw), 2.5rem);
     }
     &--inline-sp {
     @include sp {
@@ -655,7 +651,7 @@ main {
     background-color: #FFFFFF;
     width: 450px;
     padding: 1.5rem 1.5rem 0.6rem;
-    box-sizing: border-box;
+    //box-sizing: border-box;
     @include sp {
         width: 315px;
         padding: 2rem 2rem 1.4rem;
@@ -671,7 +667,7 @@ main {
     }
     p {
     color: #000000;
-    margin: 0;
+    //margin: 0;
     font-weight: 500;
     font-size: 1.6rem;
     line-height: 1.563;
@@ -750,9 +746,6 @@ main {
     padding: 0 2.0rem;
     margin: 0;
     list-style: none;
-    @include sp {
-        margin-bottom: 0rem;
-    }
     li {
         display: flex;
         border-bottom:1px solid #55A500;
@@ -774,7 +767,7 @@ main {
 }
 .news-date {
     margin-right: clamp(4rem, calc(10.36vw - 42.9px), 6.9rem);
-    font-size: 1.6rem;
+    font-size: clamp(1.4rem, calc(16 / 1080 * 100vw), 1.6rem);
     line-height: 2.063;
     white-space: nowrap;
     @include sp {
@@ -785,7 +778,7 @@ main {
 }
 .news-title {
     padding-top: 0.7rem;
-    font-size: 1.8rem;
+    font-size: clamp(1.6rem, calc(18 / 1080 * 100vw), 1.8rem);
     line-height: 1.389;
     @include sp {
         display: -webkit-box;
@@ -806,10 +799,10 @@ main {
 .news-more {
     position: relative;
     margin-left: auto;
-    padding-bottom: 2.0rem;
+    margin-top: 0.8rem;
     font-weight: 600;
     font-size: 2.0rem;
-    line-height: 1.65;
+    line-height: 1;
     color: #55A500;
     transition: transform 0.5s ease; /* ← ここが重要 */
     &:hover {
@@ -817,7 +810,8 @@ main {
     }
     img {
         width: 80px;
-        padding: 2.1rem 0 0.8rem;
+        height: 20px;
+        margin: 1.3rem 0 0.8rem;
     }
     span {
         position: absolute;
@@ -879,7 +873,6 @@ main {
         padding: 4.9rem 0.5rem 4.2rem calc(220 / 920 * 100%);
         margin-left: calc(-180 / 920 * 100%);
         margin-top: calc(200 / 920 * 100%);
-        padding-right: 0.5rem;
         @include sp {
             width: 100%;
             margin-top: 0;
@@ -902,14 +895,14 @@ address {
 }
 .company-name, .company-address,
 .company-tel, .company-mail {
-    font-size: clamp(1.4rem, calc(16 / 1080 * 100vw), 1.8rem);
-    line-height: 1.563;
+    font-size: clamp(1.4rem, calc(16 / 1080 * 100vw), 1.6rem);
+    line-height: calc(25 / 16);
     margin: 0;
     @include sp {
         font-size: clamp(1.2rem, calc(16 / 375 * 100vw), 2.0rem);
     }
     &.company-name {
-        font-size: clamp(1.6rem, calc(20 / 1080 * 100vw), 2.5rem);
+        font-size: clamp(1.8rem, calc(20 / 1080 * 100vw), 2.0rem);
         line-height: 1.65;
         margin-bottom: 0.7rem;
         @include sp {
@@ -934,7 +927,7 @@ address {
     }
     &.company-mail {
         a {
-            font-size: 1.6rem;
+            font-size: clamp(1.4rem, calc(16 / 1080 * 100vw), 1.6rem);
             font-weight: 600;
             @include sp {
                 font-size: clamp(1.6rem, calc(16 / 375 * 100vw), 2.0rem);
@@ -993,10 +986,12 @@ address {
     padding: 1.2rem 1.9rem 1.1rem;
     border: 1px solid transparent;
     font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
-    font-size: 1.6rem;
-    line-height: 1.563;
+    font-size: 1.8rem;
+    line-height: calc(25 / 18);
     @include sp {
         width: 100%;
+        font-size: 1.6rem;
+        line-height: calc(25 / 16);
     }
     &:focus {
         outline: none;
@@ -1023,7 +1018,7 @@ textarea::placeholder {
         align-items: center;
         margin-left: 0.3rem;
         @include sp {
-            gap: 8vw;
+            gap: 39px;
         }
         label {
             display: flex;
@@ -1033,6 +1028,7 @@ textarea::placeholder {
             line-height: 1.389;
             @include sp {
                 font-size: clamp(1.8rem, calc(18 / 375 * 100vw), 2.2rem);
+                padding-left: 3.0rem;
             }
             cursor: pointer;
             input[type="radio"] {
@@ -1070,12 +1066,6 @@ textarea::placeholder {
 .form-select {
     appearance: none;
     width: 100%;
-    font-size: 1.8rem;
-    line-height: 1.389;
-    @include sp {
-        font-size: 1.6rem;
-        line-height: 1.563;
-    }
 }
 .select-wrapper {
     position: relative;
@@ -1097,13 +1087,9 @@ textarea::placeholder {
     width: 100%;
     height: 200px;
     resize: vertical;
-    font-size: 1.8rem;
     font-weight: 500;
     line-height: 1.7;
     padding: 1.5rem;
-    @include sp {
-        font-size: 1.6rem;
-    }
 }
 .message-group,.checkbox-group,.privacy-group {
     display: flex;
@@ -1204,12 +1190,9 @@ fieldset {
         transform: rotate(45deg);
     }
 }
-.custom-checkbox.offset {
-    margin-left: 5px;
-    @include sp {
-        margin-left: 0;
-    }
-}
+/*.custom-checkbox.offset {
+    margin-left: 0px;
+}*/
 .privacy-group {
     margin-bottom: 8.0rem;
     @include sp {
@@ -1331,11 +1314,11 @@ button {
     display: inline-block;
     padding: 2.8rem 0 2.6rem;
     border-top: 1px solid #000;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     line-height: 1.833;
     @include sp {
         min-width: 80px;
-        padding: 2.0rem 0 2.6rem;
+        padding: 2.0rem 0 2.8rem;
     }
     ul {
         display: flex;
@@ -1351,13 +1334,14 @@ button {
         }
         li {
             a {
-                color: #000;
                 font-size: 1.8rem;
-                line-height: 1.833;
+                line-height: calc(35 / 18);
+                color: #000;
                 text-decoration: none;
                 letter-spacing: 0.01em;
                 @include sp {
                     font-size: clamp(1.8rem, calc(18 / 375 * 100vw), 2.5rem);
+                    line-height: calc(33 / 18);
                 }
             }
         }
@@ -1367,13 +1351,21 @@ button {
     display: flex;
     justify-content: center;
     gap: 3.0rem;
+    height: 28px;
     a {
         img {
             width: 28px;
-            vertical-align: middle;
             @include sp {
                 width: clamp(2.8rem, calc(28 / 375 * 100vw), 3.5rem);
             }
+        }
+        // Twitterだけ微調整
+        &:nth-child(1) img {
+            transform: translateY(2px);
+        }
+        // YouTubeだけ微調整
+        &:nth-child(3) img {
+            transform: translateY(3px);
         }
     }
 }
@@ -1392,10 +1384,15 @@ button {
     line-height: 1.65;
     text-align: center;
     @include sp {
-        transform: translateX(-1ch); // ← 1文字（1ch）左へずらす
+        //transform: translateX(-1ch); // ← 1文字（1ch）左へずらす
         font-size: clamp(2.0rem, calc(20 / 375 * 100vw), 2.5rem);
         line-height: 1.25;
     }
+}
+.copyright-name { 
+    @include sp { 
+        display: inline-block; transform: translateX(-1ch);
+    } 
 }
 .copy-mark {
     font-size: 1.4rem;  // 本文より少し小さく
@@ -1444,7 +1441,6 @@ button {
         height: 11.5px;
     }
 }
-
   /* スクロールされたときに適用されるCSS */
 #pagetop.visible {
     opacity: 1;

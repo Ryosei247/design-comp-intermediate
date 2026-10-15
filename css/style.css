@@ -25,7 +25,7 @@ html {
 body {
   margin: 0;
   overflow-x: clip;
-  font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
+  font-family: "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
   font-weight: 500;
   color: #FFFFFF;
   font-style: normal;
@@ -50,7 +50,16 @@ a {
   transition: opacity 0.5s;
 }
 a:hover {
-  opacity: 0.8;
+  opacity: 0.6;
+}
+@media (max-width: 767px) {
+  a {
+    -webkit-transition: none;
+    transition: none;
+  }
+  a:hover {
+    opacity: 1;
+  }
 }
 
 .inner, .inner1, .inner2 {
@@ -88,7 +97,7 @@ a:hover {
 }
 @media (max-width: 767px) {
   .sub-title h2 {
-    font-size: clamp(3rem, 8vw, 3.5rem);
+    font-size: clamp(2.5rem, 8vw, 4rem);
   }
 }
 .sub-title p {
@@ -133,12 +142,11 @@ scroll_up ｜下から上へ出現
   position: fixed;
   width: 100%;
   z-index: 100;
-}
-@media (max-width: 767px) {
-  .header {
-    display: initial;
-    padding: 0;
-  }
+  /*border: 1px solid #FFFFFF;*/
+  /*@include sp {
+      display: initial;
+      padding: 0;
+  }*/
 }
 .header.change-color {
   background-color: #4D9600;
@@ -150,7 +158,9 @@ scroll_up ｜下から上へ出現
   display: flex;
   max-width: 1080px;
   margin: 0 auto;
-  padding-inline: clamp(50px, 7.4vw, 100px);
+  padding-left: clamp(50px, 7.4074074074vw, 100px);
+  padding-right: clamp(50px, 7.3148148148vw, 100px);
+  /*padding-inline: clamp(50px, calc(80 / 1080 * 100vw), 100px);*/
 }
 @media (max-width: 767px) {
   .header-inner {
@@ -162,22 +172,18 @@ scroll_up ｜下から上へ出現
 .title {
   margin-right: auto;
 }
-@media (max-width: 767px) {
-  .title {
-    font-size: 2rem;
-  }
-}
 .title a {
   display: block;
-  padding: 2.8rem 0 1.9rem;
-  font-size: clamp(1.5rem, 1.8518518519vw, 2rem);
-  line-height: 1.65;
+  padding: 3rem 0 1.9rem;
+  font-size: clamp(1.7rem, 1.8518518519vw, 2rem);
+  line-height: 1;
 }
 @media (max-width: 767px) {
   .title a {
     padding: 0.8rem 0 0.9rem;
     /*font-size: clamp(1.5rem, calc(20 / 375 * 100vw), 2.5rem);*/
-    font-size: 2rem;
+    font-size: clamp(1.8rem, 5.3333333333vw, 3rem);
+    line-height: 1.65;
   }
 }
 
@@ -196,7 +202,6 @@ scroll_up ｜下から上へ出現
     right: -120%;
     width: 300px;
     padding: 0;
-    border: 0px solid #000;
     background: #4D9600;
     z-index: 2;
     opacity: 0;
@@ -210,22 +215,17 @@ scroll_up ｜下から上へ出現
     pointer-events: auto;
   }
 }
-@media (max-width: 767px) and (max-width: 767px) {
-  .nav-list.active {
-    right: 0;
-  }
-}
 .nav-list a {
   display: block;
   position: relative;
-  padding: 2.7rem 0 2rem;
-  font-size: clamp(1.2rem, 1.6666666667vw, 1.8rem);
-  line-height: 1.833;
-  letter-spacing: 0.01em;
+  padding: 3.1rem 0 2rem;
+  font-size: clamp(1.4rem, 1.6666666667vw, 1.8rem);
+  line-height: 1;
+  letter-spacing: 0.005em;
+  font-weight: 500;
 }
 @media (max-width: 767px) {
   .nav-list a {
-    display: block;
     padding: 1.2rem 0.5rem 1.3rem 5.3333333333vw;
     width: 80vw;
     height: auto;
@@ -400,7 +400,7 @@ main {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   font-weight: 600;
-  font-size: 4rem;
+  font-size: clamp(3rem, 3.7037037037vw, 4rem);
   text-align: center;
   line-height: 1.75;
   text-shadow: 5px 5px 5px #000000;
@@ -412,7 +412,7 @@ main {
   .main-text {
     left: 51%;
     /*font-size:max(100vw * 3.0 / 375,3.0rem);*/
-    font-size: clamp(3rem, 8vw, 3.5rem);
+    font-size: clamp(2.8rem, 8vw, 4rem);
     line-height: 2;
     text-indent: 0;
   }
@@ -535,6 +535,7 @@ main {
       -ms-flex-pack: center;
           justify-content: center;
 }
+
 /* サービス */
 #service {
   padding: 8rem 0;
@@ -587,7 +588,7 @@ main {
 #service .service-content .service-box .service-image .service-capture {
   font-size: 1.6rem;
   color: #000;
-  line-height: 1.563;
+  line-height: 1.5625;
 }
 @media (max-width: 767px) {
   #service .service-content .service-box .service-image .service-capture {
@@ -617,11 +618,6 @@ main {
   position: relative;
   font-weight: 600;
 }
-@media (max-width: 767px) {
-  #service .service-content .service-box .service-textarea h3, #service .service-content .service-box .service-textarea p {
-    max-width: 100%;
-  }
-}
 #service .service-content .service-box .service-textarea h3 {
   font-size: clamp(2rem, 2.3148148148vw, 2.5rem);
   line-height: 1.32;
@@ -630,13 +626,13 @@ main {
 @media (max-width: 767px) {
   #service .service-content .service-box .service-textarea h3 {
     margin-bottom: 1.4rem;
-    font-size: clamp(1.6rem, 5.3333333333vw, 2.5rem);
+    font-size: clamp(1.8rem, 5.3333333333vw, 3rem);
     line-height: 1.25;
   }
 }
 #service .service-content .service-box .service-textarea p {
   font-size: clamp(1.4rem, 1.4814814815vw, 1.6rem);
-  line-height: 1.563;
+  line-height: 1.5625;
 }
 @media (min-width: 768px) and (max-width: 950px) {
   #service .service-content .service-box .service-textarea p {
@@ -662,12 +658,17 @@ main {
 @media (min-width: 768px) {
   #service .service-content .service-odd .service-textarea {
     margin-left: -19.5652173913%;
-    padding: 5rem 0.5rem 4.2rem 23.9130434783%;
+    padding: 5rem 0.5rem 4.2rem 26.9565217391%;
   }
 }
-@media (min-width: 768px) and (max-width: 950px) {
-  #service .service-content .service-odd .service-textarea {
-    padding-left: 22.8260869565%;
+#service .service-content .service-odd .service-textarea {
+  /*@include tab {
+      padding-left: calc(210 / 920 * 100%);
+  }*/
+}
+@media (min-width: 768px) {
+  #service .service-content .service-odd:nth-child(3) .service-textarea {
+    padding-left: 25.8695652174%;
   }
 }
 #service .service-content .service-even {
@@ -690,17 +691,12 @@ main {
     margin-right: -19.5652173913%;
   }
 }
-@media (min-width: 768px) {
-  #service .service-content .service-even .service-image {
-    text-align: right;
-  }
-}
 #service .service-content .service-even .service-textarea::before {
   left: 0;
 }
 @media (min-width: 768px) {
-  #service .service-content .service-even .service-textarea {
-    padding-left: 4rem;
+  #service .service-content .service-even .service-image {
+    text-align: right;
   }
 }
 
@@ -721,7 +717,7 @@ main {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
-  gap: 4.5rem 4.3%;
+  gap: 4.5rem 4.347826087%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -734,7 +730,7 @@ main {
 }
 
 .works-box {
-  width: 21.775%;
+  width: calc((100% - 120px) / 4);
   cursor: pointer;
 }
 @media (max-width: 767px) {
@@ -756,14 +752,14 @@ main {
 }
 
 .works-textarea {
-  font-size: 1.6rem;
-  line-height: 1.563;
+  font-size: clamp(1.4rem, 1.4814814815vw, 1.6rem);
+  line-height: 1.5625;
   color: #000000;
 }
 @media (max-width: 767px) {
   .works-textarea {
     margin-bottom: 2.2rem;
-    font-size: clamp(1.6rem, 4.2666666667vw, 2rem);
+    font-size: clamp(1.6rem, 4.2666666667vw, 2.5rem);
   }
 }
 @media (max-width: 767px) {
@@ -806,8 +802,6 @@ main {
   background-color: #FFFFFF;
   width: 450px;
   padding: 1.5rem 1.5rem 0.6rem;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 @media (max-width: 767px) {
   .works-modal {
@@ -828,7 +822,6 @@ main {
 }
 .works-modal p {
   color: #000000;
-  margin: 0;
   font-weight: 500;
   font-size: 1.6rem;
   line-height: 1.563;
@@ -928,11 +921,6 @@ main {
   margin: 0;
   list-style: none;
 }
-@media (max-width: 767px) {
-  .news-list {
-    margin-bottom: 0rem;
-  }
-}
 .news-list li {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -959,7 +947,7 @@ main {
 
 .news-date {
   margin-right: clamp(4rem, 10.36vw - 42.9px, 6.9rem);
-  font-size: 1.6rem;
+  font-size: clamp(1.4rem, 1.4814814815vw, 1.6rem);
   line-height: 2.063;
   white-space: nowrap;
 }
@@ -973,7 +961,7 @@ main {
 
 .news-title {
   padding-top: 0.7rem;
-  font-size: 1.8rem;
+  font-size: clamp(1.6rem, 1.6666666667vw, 1.8rem);
   line-height: 1.389;
 }
 @media (max-width: 767px) {
@@ -997,10 +985,10 @@ main {
 .news-more {
   position: relative;
   margin-left: auto;
-  padding-bottom: 2rem;
+  margin-top: 0.8rem;
   font-weight: 600;
   font-size: 2rem;
-  line-height: 1.65;
+  line-height: 1;
   color: #55A500;
   -webkit-transition: -webkit-transform 0.5s ease;
   transition: -webkit-transform 0.5s ease;
@@ -1013,7 +1001,8 @@ main {
 }
 .news-more img {
   width: 80px;
-  padding: 2.1rem 0 0.8rem;
+  height: 20px;
+  margin: 1.3rem 0 0.8rem;
 }
 .news-more span {
   position: absolute;
@@ -1092,7 +1081,6 @@ main {
   padding: 4.9rem 0.5rem 4.2rem 23.9130434783%;
   margin-left: -19.5652173913%;
   margin-top: 21.7391304348%;
-  padding-right: 0.5rem;
 }
 @media (max-width: 767px) {
   .company-box .company-textarea {
@@ -1120,8 +1108,8 @@ address {
 
 .company-name, .company-address,
 .company-tel, .company-mail {
-  font-size: clamp(1.4rem, 1.4814814815vw, 1.8rem);
-  line-height: 1.563;
+  font-size: clamp(1.4rem, 1.4814814815vw, 1.6rem);
+  line-height: 1.5625;
   margin: 0;
 }
 @media (max-width: 767px) {
@@ -1132,7 +1120,7 @@ address {
 }
 .company-name.company-name, .company-address.company-name,
 .company-tel.company-name, .company-mail.company-name {
-  font-size: clamp(1.6rem, 1.8518518519vw, 2.5rem);
+  font-size: clamp(1.8rem, 1.8518518519vw, 2rem);
   line-height: 1.65;
   margin-bottom: 0.7rem;
 }
@@ -1166,7 +1154,7 @@ address {
 }
 .company-name.company-mail a, .company-address.company-mail a,
 .company-tel.company-mail a, .company-mail.company-mail a {
-  font-size: 1.6rem;
+  font-size: clamp(1.4rem, 1.4814814815vw, 1.6rem);
   font-weight: 600;
 }
 @media (max-width: 767px) {
@@ -1242,12 +1230,14 @@ address {
   padding: 1.2rem 1.9rem 1.1rem;
   border: 1px solid transparent;
   font-family: "游明朝", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", serif;
-  font-size: 1.6rem;
-  line-height: 1.563;
+  font-size: 1.8rem;
+  line-height: 1.3888888889;
 }
 @media (max-width: 767px) {
   .form-text, .form-select, .form-textarea {
     width: 100%;
+    font-size: 1.6rem;
+    line-height: 1.5625;
   }
 }
 .form-text:focus, .form-select:focus, .form-textarea:focus {
@@ -1300,7 +1290,7 @@ textarea::placeholder {
 }
 @media (max-width: 767px) {
   .gender-group .radio-options {
-    gap: 8vw;
+    gap: 39px;
   }
 }
 .gender-group .radio-options label {
@@ -1315,6 +1305,7 @@ textarea::placeholder {
 @media (max-width: 767px) {
   .gender-group .radio-options label {
     font-size: clamp(1.8rem, 4.8vw, 2.2rem);
+    padding-left: 3rem;
   }
 }
 .gender-group .radio-options label {
@@ -1361,14 +1352,6 @@ textarea::placeholder {
      -moz-appearance: none;
           appearance: none;
   width: 100%;
-  font-size: 1.8rem;
-  line-height: 1.389;
-}
-@media (max-width: 767px) {
-  .form-select {
-    font-size: 1.6rem;
-    line-height: 1.563;
-  }
 }
 
 .select-wrapper {
@@ -1392,15 +1375,9 @@ textarea::placeholder {
   width: 100%;
   height: 200px;
   resize: vertical;
-  font-size: 1.8rem;
   font-weight: 500;
   line-height: 1.7;
   padding: 1.5rem;
-}
-@media (max-width: 767px) {
-  .form-textarea {
-    font-size: 1.6rem;
-  }
 }
 
 .message-group, .checkbox-group, .privacy-group {
@@ -1538,15 +1515,9 @@ fieldset {
           transform: rotate(45deg);
 }
 
-.custom-checkbox.offset {
-  margin-left: 5px;
-}
-@media (max-width: 767px) {
-  .custom-checkbox.offset {
-    margin-left: 0;
-  }
-}
-
+/*.custom-checkbox.offset {
+    margin-left: 0px;
+}*/
 .privacy-group {
   margin-bottom: 8rem;
 }
@@ -1699,13 +1670,13 @@ button:hover {
   display: inline-block;
   padding: 2.8rem 0 2.6rem;
   border-top: 1px solid #000;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   line-height: 1.833;
 }
 @media (max-width: 767px) {
   .footer-nav {
     min-width: 80px;
-    padding: 2rem 0 2.6rem;
+    padding: 2rem 0 2.8rem;
   }
 }
 .footer-nav ul {
@@ -1729,15 +1700,16 @@ button:hover {
   }
 }
 .footer-nav ul li a {
-  color: #000;
   font-size: 1.8rem;
-  line-height: 1.833;
+  line-height: 1.9444444444;
+  color: #000;
   text-decoration: none;
   letter-spacing: 0.01em;
 }
 @media (max-width: 767px) {
   .footer-nav ul li a {
     font-size: clamp(1.8rem, 4.8vw, 2.5rem);
+    line-height: 1.8333333333;
   }
 }
 
@@ -1749,15 +1721,23 @@ button:hover {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 3rem;
+  height: 28px;
 }
 .sns-area a img {
   width: 28px;
-  vertical-align: middle;
 }
 @media (max-width: 767px) {
   .sns-area a img {
     width: clamp(2.8rem, 7.4666666667vw, 3.5rem);
   }
+}
+.sns-area a:nth-child(1) img {
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+.sns-area a:nth-child(3) img {
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
 }
 
 /* コピーライト */
@@ -1779,10 +1759,16 @@ button:hover {
 }
 @media (max-width: 767px) {
   .copyright-area {
-    -webkit-transform: translateX(-1ch);
-            transform: translateX(-1ch);
     font-size: clamp(2rem, 5.3333333333vw, 2.5rem);
     line-height: 1.25;
+  }
+}
+
+@media (max-width: 767px) {
+  .copyright-name {
+    display: inline-block;
+    -webkit-transform: translateX(-1ch);
+            transform: translateX(-1ch);
   }
 }
 
